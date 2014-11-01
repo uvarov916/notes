@@ -10,6 +10,10 @@ String interpolation:
 ```ruby
 puts "What is 3 + 2? #{3 + 2}"
 ```
+
+```
+puts "What is 3 + 2? #{3 + 2}"
+```
 Comments:
 	
 	# sample comment
