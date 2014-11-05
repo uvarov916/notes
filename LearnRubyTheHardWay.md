@@ -108,3 +108,72 @@ likes = $stdin.gets.chomp
 
 puts "Alright, so you said #{likes} about liking me."
 ```
+
+## Working with files (File I/O)
+
+Printing content of a file:
+```ruby
+# Opens a file and stores file object into a variable
+txt = open(filename)
+# Gets contents of the file be calling read method on file object and prints it to the console
+puts txt.read
+# can be used without parentheses: txt.close
+txt.close()
+```
+
+List of file object commands:
+- `close` - closes the file, like `File->Save..` in the editor
+- `read` - reads the contents of the file; result can be assigned to a variable
+- `readline` - reads just one line of a text file
+- `truncate` - empties the file (watch out if you care about the file)
+- `write('stuff')` - writes "stuff" to the file
+
+Writing to a file:
+```ruby
+filename = ARGV.first
+
+# opens file for writing
+target = open(filename, 'w')
+# erases file (truncates, so it has at most 0 bytes)
+target.truncate(0)
+
+target.write("I am the first line.\n")
+target.write("I am the second line.\n")
+
+target.close
+```
+
+Some modes (not all) for opening a file:
+
+Mode | Meadning
+--- | ---
+`r` | Read-only, starts at beginning of file (default mode)
+`r+` | Read-write, starts at beginning of file
+`w` | Write-only, truncates existing file to zerol length or creates a new file for writing
+`w+` | Read-write, truncates existing file to zero length or creates a new file for reading and writing.
+`a` | Write-only, starts at end of file if exists, otherwise creates a new file for writing
+`a+` | Read-write, starts at end of file if file exists, otherwise xreates a new file for reading and writing.
+
+Copying one file to another:
+```ruby
+from_file, to_file = ARGV
+
+puts "Copying from #{from_file} to #{to_file}"
+
+in_file = open(from_file)
+indata = in_file.read
+
+puts "Does the output file exist? #{File.exist?(to_file)}"
+puts "Ready, hit RETURN to continue, CTRL-C to abort."
+$stdin.gets
+
+out_file = open(to_file, 'w')
+out_file.write(indata)
+
+puts "Alright, all done."
+
+out_file.close
+in_file.close
+```
+
+`File.exist?(to_file)` - checks if given file exists
