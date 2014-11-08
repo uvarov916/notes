@@ -2,9 +2,11 @@
 
 ## Basics
 ### Printing
-Printing a string with a new line at the end:
+Printing a string with to the console:
 ```ruby
+# with new line at the end (like println)
 puts 'string with a new line at the end'
+# without new line at the end
 print 'string without a new line at the end'
 ```
 The `puts` (short for "put string") and `print` commands are both used to display the results of evaluating Ruby code. The primary difference between them is that `puts` adds a newline after executing, and `print` does not.
@@ -161,6 +163,7 @@ from_file, to_file = ARGV
 puts "Copying from #{from_file} to #{to_file}"
 
 in_file = open(from_file)
+# returns all contents of the file
 indata = in_file.read
 
 puts "Does the output file exist? #{File.exist?(to_file)}"
@@ -177,3 +180,59 @@ in_file.close
 ```
 
 `File.exist?(to_file)` - checks if given file exists
+
+`file.read` returns all contents of the file.
+
+`file.seek()` can be used to move inside a file. For example, if you pass `0` to it, you'll move to the beginning of the file:
+```ruby
+current_file = open(input_file)
+
+# moves to the beginning of the file
+current_file.seek(0)
+# saves the first line of the file
+first_line = current_file.gets.chomp
+# saves the second line of the file
+second_line = current_file.gets.chomp
+```
+
+
+
+## Functions
+
+Creating a function:
+```ruby
+def function_name(arg1, arg2)
+	# do something here
+	return arg1
+end
+
+# two ways to call a function
+function_name "arg1", "arg2"
+function_name("arg1", "arg2")
+```
+
+Creating simple function that add 2 numbers:
+```ruby
+def add_two(num1, num2)
+	puts "Adding #{num1} and #{num2}..."
+	return num1 + num2
+end
+
+result = add_two(5, 3)
+```
+
+It's possible to create arguments list using `*` (splat operator). In the following example all arguments passed to the funtion will be put into an array called args.
+```ruby
+def func(*args)
+	# ...
+end
+
+# puts first 2 parameters into arg1 and arg2, and the rest to array other_arguments
+def func2(arg1, arg2, *other_arguments)
+	# ...
+end
+```
+
+## Miscellaneous
+
+There's no `++` or `--` operators in Ruby; instead, you should use `var += 1` or `var -= 1` correspondingly.
