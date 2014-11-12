@@ -20,6 +20,12 @@ Using variables:
 cars = 100
 puts "There are #{cars} cars available."
 ```
+
+Connecting (requiring) another ruby file:
+```ruby
+require "./ex25.rb"
+```
+
 ## Strings
 String interpolation:
 ```ruby
@@ -68,6 +74,8 @@ Escape	| What it does
 `\v` | ASCII vertical tab (VT)
 `\ooo` | Character with octal value `ooo`
 `\xhh` | Character with hex value `hh`
+
+`\n` and `\t` work only when inside double quotes: `"\n\t"`; don't work in this case: `'\n\t'`
 
 ## Taking input from a user
 
@@ -231,6 +239,38 @@ end
 def func2(arg1, arg2, *other_arguments)
 	# ...
 end
+```
+
+Functions can return multiple values; to access them you need to unpack returned value:
+```ruby
+def some_function()
+	return 1, 2
+end
+
+# value1 will be 1; value2 will be 2
+value1, value2 = some_function()
+```
+
+## Modules
+
+A `Module` is a collection of methods and constants (similiar to Classes).
+```ruby
+module Ex
+
+	# defining a method in a module
+	def Ex.add_two(a, b)
+		return a + b
+	end
+	
+	def Ex.add_three(a, b, c)
+		return a + b + c
+	end
+	
+end
+
+# using methods from a module
+a = Ex.add_two(1,2)
+b = Ex.add_three(1, 2, 3)
 ```
 
 ## Miscellaneous
