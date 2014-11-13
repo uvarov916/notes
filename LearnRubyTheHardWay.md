@@ -10,6 +10,15 @@ puts 'string with a new line at the end'
 print 'string without a new line at the end'
 ```
 The `puts` (short for "put string") and `print` commands are both used to display the results of evaluating Ruby code. The primary difference between them is that `puts` adds a newline after executing, and `print` does not.
+### The Truth Terms
+`&&` - and
+`||` - or
+`!=` - not equal
+`==` - equal
+`>=` - greater-than-equal
+`<=` - less-than-equal
+`true`
+`false`
 ### Other
 Comments:
 ```ruby
