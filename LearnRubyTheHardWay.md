@@ -11,18 +11,27 @@ print 'string without a new line at the end'
 ```
 The `puts` (short for "put string") and `print` commands are both used to display the results of evaluating Ruby code. The primary difference between them is that `puts` adds a newline after executing, and `print` does not.
 ### The Truth Terms
-`&&` - and
-`||` - or
-`!=` - not equal
-`==` - equal
-`>=` - greater-than-equal
-`<=` - less-than-equal
-`true`
-`false`
+
+- `&&` - and
+- `||` - or
+- `!=` - not equal
+- `==` - equal
+- `>=` - greater-than-equal
+- `<=` - less-than-equal
+- `true`
+- `false`
+
+
 ### Other
 Comments:
 ```ruby
 # sample comment
+
+=begin
+Sample
+multiline
+comment
+=end
 ```
 Using variables:
 ```ruby
@@ -85,6 +94,23 @@ Escape	| What it does
 `\xhh` | Character with hex value `hh`
 
 `\n` and `\t` work only when inside double quotes: `"\n\t"`; don't work in this case: `'\n\t'`
+
+### String methods
+
+`.length` - returns length of a string
+`.reverse` - returns reversed string
+`.upcase` - transforms string to uppercase
+`.downcase` - transform string to lowercase
+`.capitalize` - capitalizes the first letter of a string and makes the rest of the letters lowercase
+
+```ruby
+first_name = "Ivan"
+
+# returns upercase string, but doesn't change the value stored in a variable
+first_name.upcase
+# changes values stored in a variable
+first_name.upcase!
+```
 
 ## Taking input from a user
 
@@ -280,6 +306,59 @@ end
 # using methods from a module
 a = Ex.add_two(1,2)
 b = Ex.add_three(1, 2, 3)
+```
+
+## Control flow
+
+### If statements:
+```ruby
+if a > 5
+	puts "a more than 5"
+elsif a < 5
+	puts "a less than 5"
+else
+	puts "a is equal to 5"
+end
+```
+
+### Loops
+
+3 ways to print elemtns of the array with for loops:
+```ruby
+the_count = [1, 2, 3, 4, 5]
+
+for number in the_count
+	puts "This is count #{number}"
+end
+
+# more Ruby-style loops, better use one of the next two than the first one
+the_count.each do |number|
+	puts "This is count #{number}"
+end
+
+the_count.each {|number| puts "This is count #{number}"}
+```
+
+While loops
+```ruby
+i = 0
+while a < 5
+	puts a
+	a += 1
+end
+```
+
+## Arrays
+
+Basic operations on array:
+```ruby
+sample_array = ["abc", 5, true]
+
+# adds 7 to the end of the array
+sample_array.push(7)
+
+# adds "str" to the end of the array
+sample_array << "str"
 ```
 
 ## Miscellaneous
